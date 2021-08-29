@@ -12,25 +12,25 @@ resource "aws_instance" "web_server" {
   # depends_on = ["aws_s3_bucket.learntf-bins"]
 
   # Provisioner
-  provisioner "remote-exec" {
-    inline = [
-      "sudo yum install -y httpd",
-      "sudo service httpd start",
-      "sudo groupadd www",
-      "sudo usermod -a -G www ubuntu",
-      "sudo usermod -a -G www apache",
-      "sudo chown -R apache:www /var/www",
-      "sudo chmod 770 -R /var/www"
-    ]
-  }
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "sudo yum install -y httpd",
+  #     "sudo service httpd start",
+  #     "sudo groupadd www",
+  #     "sudo usermod -a -G www ubuntu",
+  #     "sudo usermod -a -G www apache",
+  #     "sudo chown -R apache:www /var/www",
+  #     "sudo chmod 770 -R /var/www"
+  #   ]
+  # }
 
 
-  connection {
-    type        = "ssh"
-    host        = self.public_ip
-    user        = "ubuntu"
-    private_key = file("/home/osboxes/Desktop/terraform/rsa-key/aws-rsa")
-  }
+  # connection {
+  #   type        = "ssh"
+  #   host        = self.public_ip
+  #   user        = "ubuntu"
+  #   private_key = file("/home/osboxes/Desktop/terraform/rsa-key/aws-rsa")
+  # }
 
 
 }
